@@ -1,0 +1,10 @@
+.form-inputs {
+	position: relative;
+}
+
+.form-inputs i {
+	position: absolute;
+	right: 5%;
+	top: 15%;
+}
+

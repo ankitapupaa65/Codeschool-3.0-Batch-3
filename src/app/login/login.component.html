@@ -1,0 +1,62 @@
+<section>
+    <div class="m-5 p-5 bg-light">
+        <div class=" shadow bg-white p-5 m-5 row justify-content-between">
+            <div class="col-5">
+                <img src="../../assets/image/login.avif" alt="">
+            </div>
+            <div class="p-3 text-center m-5 col-5 ">
+                <h2 class="fw-bold mb-5"> LogIn</h2>
+                <form [formGroup]="logInFormDetails">
+
+                    <div class="form-outline mb-4">
+                        <input type="Email" id="typeEmail" placeholder="Email" class="form-control form-control-lg"
+                            formControlName="email"
+                            [class.is-invalid]="(this.logInFormDetails.get('email')?.touched && this.logInFormDetails.get('email')?.invalid)|| logInFormStatus"
+                            [class.is-valid]="this.logInFormDetails.get('email')?.valid" />
+                        @if(this.logInFormDetails.get('email')?.touched || logInFormStatus){
+                        <p id="typeEmailError" class="text-danger text-start"
+                            *ngIf="this.logInFormDetails.get('email')?.hasError('required')">Please Enter the
+                            Email</p>
+                        <p id="typeEmailError" class="text-danger text-start"
+                            *ngIf="this.logInFormDetails.get('email')?.hasError('email')">Please Enter the Valid
+                            Email </p>
+
+                        }
+
+                    </div>
+
+                    <div class="form-outline mb-4 d-flex">
+                        <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="Password" id="typePassword"
+                            class="form-control form-control-lg" formControlName="password"
+                            [class.is-invalid]="(this.logInFormDetails.get('password')?.touched&& this.logInFormDetails.get('password')?.invalid) || logInFormStatus"
+                            [class.is-valid]="this.logInFormDetails.get('password')?.valid" />
+                        <button type="button" class="btn btn-secondary " (click)="showPasswordText();"><i
+                                class="bi bi-eye-fill text-white" *ngIf="!showPassword"></i>
+                            <i class="bi bi-eye-slash-fill text-white" *ngIf="showPassword"></i></button>
+                    </div>
+                    @if(this.logInFormDetails.get('password')?.touched || logInFormStatus){
+                    <p class="text-danger text-start"
+                        *ngIf="this.logInFormDetails.get('password')?.hasError('required')">Please Enter
+                        Password </p>
+                    <p class="text-danger text-start"
+                        *ngIf="this.logInFormDetails.get('password')?.hasError(' minLength')">Minimum 5
+                        Character is allowed ! </p>
+                    <p class="text-danger text-start"
+                        *ngIf="this.logInFormDetails.get('password')?.hasError(' maxLength')">Maximum 16
+                        Character is allowed ! </p>
+
+                    }
+
+
+
+
+                </form>
+                <button type="submit" class="btn btn-primary btn-block mb-4 w-75" (click)="login()">
+                    Login
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+</section>

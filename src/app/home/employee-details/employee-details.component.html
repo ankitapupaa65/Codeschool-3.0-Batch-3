@@ -1,0 +1,84 @@
+<section class="m-4 p-4">
+    <div class="m-5 p-5" *ngIf="employeeDetails.length > 0">
+        <div class="row">
+            <div class="col-3"><img src="../../../assets/image/user.png" alt=""></div>
+            <div class="col-8 mx-4 bg-light ">
+                <h4>Employee Details</h4>
+                <div class="p-3 m-2 ms-5">
+                    <p class="fs-4"><small>Employee name :</small> {{ employeeDetails[0].first_name }} {{ employeeDetails[0].last_name }}</p>
+                    <p class="fs-4"><small>Phone Number :</small> {{ employeeDetails[0].phone_number }}</p>
+                    <p class="fs-4"><small>Designation :</small> {{ employeeDetails[0].designation?.designation_name }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <h4 class="py-4">Address Details</h4>
+            <div class="col-6">
+                <div class="bg-light">
+                    <h5 class="heading">Permanent Address</h5>
+                    <div class="p-3 m-2 ms-5">
+                        <p class="fs-5"><small>Land Mark :</small> {{ employeeDetails[0].address[0]?.land_mark }}</p>
+                        <p class="fs-5"><small>House Name :</small> {{ employeeDetails[0].address[0]?.house_name }}</p>
+                        <p class="fs-5"><small>District :</small> {{ employeeDetails[0].address[0]?.district?.district_name }}</p>
+                        <p class="fs-5"><small>State :</small> {{ employeeDetails[0].address[0]?.state?.state_name }}</p>
+                        <p class="fs-5"><small>Country :</small> {{ employeeDetails[0].address[0]?.country?.country_name }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="bg-light">
+                    <h5 class="heading">Current Address</h5>
+                    <div class="p-3 m-2 ms-5">
+                        <p class="fs-5"><small>Land Mark :</small> {{ employeeDetails[0].address[1]?.land_mark }}</p>
+                        <p class="fs-5"><small>House Name :</small> {{ employeeDetails[0].address[1]?.house_name }}</p>
+                        <p class="fs-5"><small>District :</small> {{ employeeDetails[0].address[1]?.district?.district_name }}</p>
+                        <p class="fs-5"><small>State :</small> {{ employeeDetails[0].address[1]?.state?.state_name }}</p>
+                        <p class="fs-5"><small>Country :</small> {{ employeeDetails[0].address[1]?.country?.country_name }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <h4 class="py-4">Salary Details</h4>
+            <div class="col-6">
+                <div class="bg-light">
+                    <h5 class="heading">Earnings</h5>
+                    <div class="p-3 m-2 ms-5 salaryBox">
+                        <p class="fs-5"><small>Basic Pay :</small> {{ employeeDetails[0].salary[0]?.basic_pay | currency:'INR' }}</p>
+                        <p class="fs-5"><small>HRA :</small> {{ employeeDetails[0].salary[0]?.hra | currency:'INR' }}</p>
+                        <p class="fs-5"><small>CCA :</small> {{ employeeDetails[0].salary[0]?.cca | currency:'INR' }}</p>
+                        <p class="fs-4 text-end text-success"><small class="text-primary">Total Amount :</small>
+                            {{ (employeeDetails[0].salary[0]?.basic_pay + employeeDetails[0].salary[0]?.hra + employeeDetails[0].salary[0]?.cca) | currency:'INR' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="bg-light">
+                    <h5 class="heading">Deductions</h5>
+                    <div class="p-3 m-2 ms-5 salaryBox">
+                        <p class="fs-5"><small>PT :</small> {{ employeeDetails[0].salary[0]?.pt | currency:'INR' }}</p>
+                        <p class="fs-5"><small>IT :</small> {{ employeeDetails[0].salary[0]?.it | currency:'INR' }}</p>
+                        <p class="fs-4 text-end text-danger mt-5 pt-3"><small class="text-primary">Total Amount :</small>
+                            {{ (employeeDetails[0].salary[0]?.pt + employeeDetails[0].salary[0]?.it) | currency:'INR' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="bg-light">
+                    <h5 class="heading">Net Salary</h5>
+                    <div class="p-3 m-2 ms-5">
+                        <p class="fs-2 text-center text-success">
+                            <small class="text-primary">Salary (Earnings - Deductions):</small> 
+                            {{ employeeDetails[0].salary[0]?.net | currency:'INR' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="employeeDetails.length === 0">
+        <p>No employee details available.</p>
+    </div>
+</section>

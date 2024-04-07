@@ -1,0 +1,399 @@
+<div [formGroup]="employeeDetails" class="p-4">
+
+    <section class="row mt-3" formGroupName="employee_details">
+
+        <div class="col-12 mb-2 form-heading">Employee Details</div>
+
+        <div class="col-4">
+            <label for="firstName" class="form-label">First Name</label> <sup class="text-danger">*</sup>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="first_name"
+                [class.is-invalid]="this.employeeDetails.get('employee_details.first_name')?.touched && employeeDetails.get('employee_details.first_name')?.invalid || employeeDetailsStatus"
+                [class.is-valid]="this.employeeDetails.get('employee_details.first_name')?.valid" />
+            @if(this.employeeDetails.get('employee_details.first_name')?.touched || employeeDetailsStatus){
+            <p class="text-danger text-start"
+                *ngIf="this.employeeDetails.get('employee_details.first_name')?.hasError('required')">
+                Enter the
+                First Name</p>
+            }
+        </div>
+
+        <div class="col-4">
+            <label for="lastName" class="form-label">Last Name</label> <sup class="text-danger">*</sup>
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="last_name"
+                [class.is-invalid]="this.employeeDetails.get('employee_details.last_name')?.touched && employeeDetails.get('employee_details.last_name')?.invalid || employeeDetailsStatus"
+                [class.is-valid]="this.employeeDetails.get('employee_details.last_name')?.valid" />
+            @if(this.employeeDetails.get('employee_details.last_name')?.touched || employeeDetailsStatus){
+            <p class="text-danger text-start"
+                *ngIf="this.employeeDetails.get('employee_details.last_name')?.hasError('required')">
+                Enter the
+                Last Name</p>
+            }
+        </div>
+
+        <div class="col-4">
+            <label for="phoneNo" class="form-label">Phone Number</label> <sup class="text-danger">*</sup>
+            <input type="text" class="form-control" id="phoneNo" placeholder="Phone number" formControlName="phone_no"
+                [class.is-invalid]="this.employeeDetails.get('employee_details.phone_no')?.touched && employeeDetails.get('employee_details.phone_no')?.invalid || employeeDetailsStatus"
+                [class.is-valid]="this.employeeDetails.get('employee_details.phone_no')?.valid" />
+            @if(this.employeeDetails.get('employee_details.phone_no')?.touched || employeeDetailsStatus){
+            <p class="text-danger text-start"
+                *ngIf="this.employeeDetails.get('employee_details.phone_no')?.hasError('required')">
+                Enter the
+                Phone number</p>
+            <p class="text-danger text-start"
+                *ngIf="this.employeeDetails.get('employee_details.phone_no')?.hasError('pattern')">
+                Enter the Valid
+                Phone number</p>
+            }
+        </div>
+
+        <div class="col-4">
+            <label for="designation" class="form-label">Designation</label> <sup class="text-danger">*</sup>
+            <select class="form-select w-100" aria-label="Default select example" id="designation"
+                formControlName="designation_id"
+                [class.is-invalid]="this.employeeDetails.get('employee_details.designation_id')?.touched && employeeDetails.get('employee_details.designation_id')?.invalid || employeeDetailsStatus"
+                [class.is-valid]="this.employeeDetails.get('employee_details.designation_id')?.valid">
+
+                <option value="" disabled selected>Select Here</option>
+                <option *ngFor="let desg of designations" [value]="desg.id">{{
+                    desg.designation_name }}</option>
+            </select>
+            @if(this.employeeDetails.get('employee_details.designation_id')?.touched || employeeDetailsStatus){
+            <p class="text-danger text-start"
+                *ngIf="this.employeeDetails.get('employee_details.designation_id')?.hasError('required')">
+                Choose Designation</p>
+            }
+        </div>
+
+        <div class="col-4">
+            <label for="email" class="form-label">Email</label> <sup class="text-danger">*</sup>
+            <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email"
+                [class.is-invalid]="this.employeeDetails.get('employee_details.email')?.touched && employeeDetails.get('employee_details.email')?.invalid || employeeDetailsStatus"
+                [class.is-valid]="this.employeeDetails.get('employee_details.email')?.valid" />
+            @if(this.employeeDetails.get('employee_details.email')?.touched || employeeDetailsStatus){
+            <p class="text-danger text-start"
+                *ngIf="this.employeeDetails.get('employee_details.email')?.hasError('required')">
+                Enter the
+                Email</p>
+            }
+        </div>
+
+    </section>
+
+
+    <div formGroupName="address_details">
+        <section class="row mt-3" formGroupName="permanent_address">
+
+            <div class="col-12 mb-2 form-heading">Permanent Address</div>
+
+            <div class="col-4">
+                <label for="houseName" class="form-label">House Name</label> <sup class="text-danger">*</sup>
+                <input type="text" class="form-control" id="houseName" placeholder="House Name"
+                    formControlName="house_name"
+                    [class.is-invalid]="this.employeeDetails.get(' address_details.permanent_address.house_name')?.touched && this.employeeDetails.get('address_details.permanent_address.house_name')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('address_details.permanent_address.house_name')?.valid" />
+                @if(this.employeeDetails.get('address_details.permanent_address.house_name')?.touched ||
+                employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.permanent_address.house_name')?.hasError('required')">
+                    Enter the
+                    House Name </p>
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.permanent_address.house_name')?.hasError('pattern')">
+                    Enter the valid
+                    House Name </p>
+                }
+            </div>
+
+            <div class="col-4">
+                <label for="landMark" class="form-label">Landmark</label> <sup class="text-danger">*</sup>
+                <input type="text" class="form-control" id="landMark" placeholder="Land mark"
+                    formControlName="land_mark"
+                    [class.is-invalid]="this.employeeDetails.get('address_details.permanent_address.land_mark')?.touched && this.employeeDetails.get('address_details.permanent_address.land_mark')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('address_details.permanent_address.land_mark')?.valid" />
+                @if(this.employeeDetails.get('address_details.permanent_address.land_mark')?.touched ||
+                employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.permanent_address.land_mark')?.hasError('required')">
+                    Enter the
+                    Land Mark </p>
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.permanent_address.land_mark')?.hasError('pattern')">
+                    Enter the Valid
+                    Land Mark </p>
+                }
+            </div>
+
+            <div class="col-4">
+                <label for="country" class="form-label">Country</label> <sup class="text-danger">*</sup>
+                <select class="form-select w-100" aria-label="Default select example" id="country"
+                    formControlName="country_id"
+                    [class.is-invalid]="this.employeeDetails.get('address_details.permanent_address.country_id')?.touched && this.employeeDetails.get('address_details.permanent_address.country_id')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('address_details.permanent_address.country_id')?.valid">
+                    <option value="" disabled selected>Select Here</option>
+                    <option *ngFor="let country of countries" [value]="country.id">{{
+                        country.country_name }}</option>
+                </select>
+                @if(this.employeeDetails.get('address_details.permanent_address.country_id')?.touched ||
+                employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.permanent_address.country_id')?.hasError('required')">
+                    Choose Country
+                </p>
+                }
+            </div>
+
+
+            <div class="col-4">
+                <label for="state" class="form-label">State</label> <sup class="text-danger">*</sup>
+                <select class="form-select w-100" aria-label="Default select example" id="state"
+                    formControlName="state_id"
+                    [class.is-invalid]="this.employeeDetails.get('address_details.permanent_address.state_id')?.touched && this.employeeDetails.get('address_details.permanent_address.state_id')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('address_details.permanent_address.state_id')?.valid">
+                    <option value="" disabled selected>Select Here</option>
+                    <option *ngFor="let state of states" [value]="state.id">{{
+                        state.state_name }}</option>
+                </select>
+                @if(this.employeeDetails.get('address_details.permanent_address.state_id')?.touched ||
+                employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.permanent_address.state_id')?.hasError('required')">
+                    Choose State
+                </p>
+                }
+            </div>
+
+            <div class="col-4">
+                <label for="district" class="form-label">Districts</label> <sup class="text-danger">*</sup>
+                <select class="form-select w-100" aria-label="Default select example" id="district"
+                    formControlName="district_id"
+                    [class.is-invalid]="this.employeeDetails.get('address_details.permanent_address.district_id')?.touched && this.employeeDetails.get('address_details.permanent_address.district_id')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('address_details.permanent_address.district_id')?.valid">
+                    <option value="" disabled selected>Select Here</option>
+                    <option *ngFor="let district of districts" [value]="district.id">{{
+                        district.district_name }}</option>
+                </select>
+                @if(this.employeeDetails.get('address_details.permanent_address.district_id')?.touched ||
+                employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.permanent_address.district_id')?.hasError('required')">
+                    Choose District
+                </p>
+                }
+            </div>
+
+        </section>
+
+        <section class="row mt-3" formGroupName="current_address">
+
+            <div class="col-12 mb-2 form-heading">Current Address</div>
+
+            <div class="col-4">
+                <label for="houseName" class="form-label">House Name</label> <sup class="text-danger">*</sup>
+                <input type="text" class="form-control" id="houseName" placeholder="House Name"
+                    formControlName="house_name"
+                    [class.is-invalid]="this.employeeDetails.get('address_details.current_address.house_name')?.touched && this.employeeDetails.get('address_details.current_address.house_name')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('address_details.current_address.house_name')?.valid" />
+                @if(this.employeeDetails.get('address_details.current_address.house_name')?.touched ||
+                employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.current_address.house_name')?.hasError('required')">
+                    Enter the
+                    House Name </p>
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.current_address.house_name')?.hasError('pattern')">
+                    Enter the Vaild
+                    House Name </p>
+                }
+            </div>
+
+            <div class="col-4">
+                <label for="landMark" class="form-label">Landmark</label> <sup class="text-danger">*</sup>
+                <input type="text" class="form-control" id="landMark" placeholder="Land mark"
+                    formControlName="land_mark"
+                    [class.is-invalid]="this.employeeDetails.get('address_details.current_address.land_mark')?.touched && this.employeeDetails.get('address_details.current_address.land_mark')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('address_details.current_address.land_mark')?.valid" />
+                @if(this.employeeDetails.get('address_details.current_address.land_mark')?.touched ||
+                employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.current_address.land_mark')?.hasError('required')">
+                    Enter the
+                    Land Mark </p>
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.current_address.land_mark')?.hasError('pattern')">
+                    Enter the Vaild
+                    Land Mark </p>
+                }
+            </div>
+
+            <div class="col-4">
+                <label for="country" class="form-label">Country</label> <sup class="text-danger">*</sup>
+                <select class="form-select w-100" aria-label="Default select example" id="country"
+                    formControlName="country_id"
+                    [class.is-invalid]="this.employeeDetails.get('address_details.current_address.country_id')?.touched && this.employeeDetails.get('address_details.current_address.country_id')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('address_details.current_address.country_id')?.valid">
+                    <option value="" disabled selected>Select Here</option>
+                    <option *ngFor="let country of countries" [value]="country.id">{{
+                        country.country_name }}</option>
+                </select>
+                @if(this.employeeDetails.get('address_details.current_address.country_id')?.touched ||
+                employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.current_address.country_id')?.hasError('required')">
+                    Choose Country </p>
+                }
+            </div>
+
+
+            <div class="col-4">
+                <label for="state" class="form-label">State</label> <sup class="text-danger">*</sup>
+                <select class="form-select w-100" aria-label="Default select example" id="state"
+                    formControlName="state_id"
+                    [class.is-invalid]="this.employeeDetails.get('address_details.current_address.state_id')?.touched && this.employeeDetails.get('address_details.current_address.state_id')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('address_details.current_address.state_id')?.valid">
+                    <option value="" disabled selected>Select Here</option>
+                    <option *ngFor="let state of states" [value]="state.id">{{
+                        state.state_name }}</option>
+                </select>
+                @if(this.employeeDetails.get('address_details.current_address.state_id')?.touched ||
+                employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.current_address.state_id')?.hasError('required')">
+                    Choose State </p>
+                }
+            </div>
+
+            <div class="col-4">
+                <label for="district" class="form-label">Districts</label> <sup class="text-danger">*</sup>
+                <select class="form-select w-100" aria-label="Default select example" id="district"
+                    formControlName="district_id"
+                    [class.is-invalid]="this.employeeDetails.get('address_details.current_address.district_id')?.touched && this.employeeDetails.get('address_details.current_address.district_id')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('address_details.current_address.district_id')?.valid">
+                    <option value="" disabled selected>Select Here</option>
+                    <option *ngFor="let district of districts" [value]="district.id">{{
+                        district.district_name }}
+                    </option>
+                </select>
+                @if(this.employeeDetails.get('address_details.current_address.district_id')?.touched ||
+                employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('address_details.current_address.district_id')?.hasError('required')">
+                    Choose District </p>
+                }
+            </div>
+
+        </section>
+    </div>
+
+    <div formGroupName="salary_details">
+        <section class="row mt-3" formGroupName="earning">
+
+            <div class="col-12 mb-2 form-heading">Earnings</div>
+
+            <div class="col-4">
+                <label for="basicPay" class="form-label">Basic Pay</label> <sup class="text-danger">*</sup>
+                <input type="text" class="form-control" id="basicPay" placeholder="Basic Pay"
+                    formControlName="basic_pay"
+                    [class.is-invalid]="employeeDetails.get('salary_details.earning.basic_pay')?.touched && employeeDetails.get('salary_details.earning.basic_pay')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="employeeDetails.get('salary_details.earning.basic_pay')?.valid" />
+                @if(this.employeeDetails.get(' salary_details.earning.basic_pay')?.touched || employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('salary_details.earning.basic_pay')?.hasError('required')">
+                    Enter the
+                    Basic pay for Earnings</p>
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('salary_details.earning.basic_pay')?.hasError('pattern')">
+                    Enter the Valid
+                    Basic pay for Earnings</p>
+                }
+            </div>
+
+            <div class="col-4">
+                <label for="hra" class="form-label">HRA</label> <sup class="text-danger">*</sup>
+                <input type="text" class="form-control" id="hra" placeholder="HRA" formControlName="hra"
+                    [class.is-invalid]="this.employeeDetails.get('salary_details.earning.hra')?.touched && this.employeeDetails.get('salary_details.earning.hra')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('salary_details.earning.hra')?.valid" />
+                @if(this.employeeDetails.get('salary_details.earning.hra')?.touched || employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('salary_details.earning.hra')?.hasError('required')">
+                    Enter the
+                    HRA for Earnings</p>
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('salary_details.earning.hra')?.hasError('pattern')">
+                    Enter the Valid
+                    HRA for Earnings</p>
+
+                }
+            </div>
+
+            <div class="col-4">
+                <label for="cca" class="form-label">CCA</label> <sup class="text-danger">*</sup>
+                <input type="text" class="form-control" id="cca" placeholder="CCA" formControlName="cca"
+                    [class.is-invalid]="this.employeeDetails.get('salary_details.earning.cca')?.touched && this.employeeDetails.get('salary_details.earning.cca')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('salary_details.earning.cca')?.valid" />
+                @if(this.employeeDetails.get('salary_details.earning.cca')?.touched || employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('salary_details.earning.cca')?.hasError('required')">
+                    Enter the
+                    CCA for Earnings</p>
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('salary_details.earning.cca')?.hasError('pattern')">
+                    Enter the Valid
+                    CCA for Earnings</p>
+                }
+            </div>
+
+
+
+        </section>
+
+        <section class="row mt-3" formGroupName="deduction">
+
+            <div class="col-12 mb-2 form-heading">Deductions</div>
+
+            <div class="col-4">
+                <label for="pt" class="form-label">PT</label> <sup class="text-danger">*</sup>
+                <input type="text" class="form-control" id="pt" placeholder="PT" formControlName="pt"
+                    [class.is-invalid]="this.employeeDetails.get('salary_details.deduction.pt')?.touched && this.employeeDetails.get('salary_details.deduction.pt')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('salary_details.deduction.pt')?.valid" />
+                @if(this.employeeDetails.get('salary_details.deduction.pt')?.touched || employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('salary_details.deduction.pt')?.hasError('required')">
+                    Enter the
+                    PT for Deductions</p>
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('salary_details.deduction.pt')?.hasError('pattern')">
+                    Enter the Valid
+                    PT for Deductions</p>
+                }
+            </div>
+
+            <div class="col-4">
+                <label for="it" class="form-label">IT</label> <sup class="text-danger">*</sup>
+                <input type="text" class="form-control" id="it" placeholder="IT" formControlName="it"
+                    [class.is-invalid]="this.employeeDetails.get('salary_details.deduction.it')?.touched && this.employeeDetails.get('salary_details.deduction.it')?.invalid || employeeDetailsStatus"
+                    [class.is-valid]="this.employeeDetails.get('salary_details.deduction.it')?.valid" />
+                @if(this.employeeDetails.get('salary_details.deduction.it')?.touched || employeeDetailsStatus){
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('salary_details.deduction.it')?.hasError('required')">
+                    Enter the
+                    IT for Deductions</p>
+                <p class="text-danger text-start"
+                    *ngIf="this.employeeDetails.get('salary_details.deduction.it')?.hasError('pattern')">
+                    Enter the Valid
+                    IT for Deductions</p>
+                }
+            </div>
+
+
+
+        </section>
+    </div>
+
+    <section class="d-flex justify-content-center allign-items-center mt-3">
+        <button type="button" class="btn btn-primary" (click)="addEmployee()"><i class="bi bi-plus-circle"></i>ADD
+            EMPLOYEE</button>
+
+    </section>
+
+</div>

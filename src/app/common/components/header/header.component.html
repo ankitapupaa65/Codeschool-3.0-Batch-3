@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg fixed-top " style="background:#063e6c;">
+    <div class="container-fluid ">
+        <a class="navbar-brand  " href="#">
+            <img src="" width="40px" class="d-inline-block " alt="">
+        </a>
+        <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+          <i class="bi bi-list-nested"></i>
+        </button>
+        <div class="collapse navbar-collapse ms-2" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto  mb-lg-0">
+                <li class="nav-item px-2 text-white">
+                    <a class="nav-link text-white " aria-current="page" routerLink="/home"
+                        [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">Home</a>
+                </li>
+
+                <li class="nav-item px-2 dropdown ">
+                    <a class="nav-link  text-white" routerLinkActive="active" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Employee
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/home/all-employees-deatils"> All Employees Details</a></li>
+                        <li><a class="dropdown-item" routerLink="/home/add-employee">Add Employee</a></li>
+
+                    </ul>
+                </li>
+               
+            </ul>
+            <div class="  d-flex dropdown  ">
+                <img src="../../../../assets/image/user.png" class="rounded-circle bg-white" height="40" width="40"
+                    alt="user" id="imageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="imageDropdown">
+                    <li> <img src="../../../../assets/image/user.png"
+                            class="rounded-circle dropdown-item userImage mb-2 " alt="user"></li>
+                    <li><a class="dropdown-item text-center fw-bold " *ngIf="users"> {{userDetails.name}}</a></li>
+                    <li *ngIf="userDetails.user_role_id==2"><a class="dropdown-item text-center fw-bold " *ngIf="users" routerLink="/home/ + (userDetails.id + 1)"> {{userDetails.name}} profile</a></li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item fw-bold text-center"> <i
+                                class="bi bi-box-arrow-left" (click)="logout();"></i> Log out</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</nav>
